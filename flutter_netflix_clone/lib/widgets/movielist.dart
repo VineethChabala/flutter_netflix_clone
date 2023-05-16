@@ -123,7 +123,15 @@ class Continue extends StatelessWidget {
                             child: Row(
                               children: [
                                 IconButton(
-                                    onPressed: () => print("Info"),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => PlayScreen(
+                                                  content: content,
+                                                )),
+                                      );
+                                    },
                                     icon: const Icon(
                                       Icons.info_outline,
                                       color: Colors.black,
@@ -150,13 +158,7 @@ class Continue extends StatelessWidget {
                               size: 75.0,
                             ),
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => PlayScreen(
-                                          content: content,
-                                        )),
-                              );
+                              print("play pressed");
                             }),
                       )
                     ],

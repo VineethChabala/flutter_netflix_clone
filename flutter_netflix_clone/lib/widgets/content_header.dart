@@ -75,15 +75,7 @@ class ContentHeader extends StatelessWidget {
                 FloatingActionButton.extended(
                   heroTag: "2",
                   backgroundColor: Colors.white,
-                  onPressed: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => PlayScreen(
-                                content: content,
-                              )),
-                    )
-                  },
+                  onPressed: () => {print("play")},
                   label: const Text(
                     "Play",
                     style: TextStyle(color: Colors.black),
@@ -96,7 +88,15 @@ class ContentHeader extends StatelessWidget {
                 FloatingActionButton.extended(
                   heroTag: "3",
                   backgroundColor: Colors.transparent,
-                  onPressed: () => print("Info"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PlayScreen(
+                                content: content,
+                              )),
+                    );
+                  },
                   label: const Text(
                     "Info",
                     style: TextStyle(color: Colors.white),
