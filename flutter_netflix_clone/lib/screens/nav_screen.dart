@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_netflix_clone/screens/home_screen.dart';
+import 'package:flutter_netflix_clone/screens/new_hot_screen.dart';
 
 class NavScreen extends StatefulWidget {
   const NavScreen({super.key});
@@ -12,7 +13,7 @@ class _NavScreenState extends State<NavScreen> {
   final List<Widget> screens = [
     const HomeScreen(key: PageStorageKey('homeScreen'),),
     const Scaffold(),
-    const Scaffold(),
+    const NewandHotScreen(),
     const Scaffold()
   ];
 

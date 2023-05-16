@@ -11,7 +11,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         color: Colors.transparent,
         child: SafeArea(
           child: Row(
@@ -33,7 +33,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   ),
                   IconButton(
                     onPressed: () => print("Profile pressed"),
-                    icon: Icon(Icons.account_box),
+                    icon: const Icon(Icons.account_box),
                     color: Colors.white,
                   )
                 ],

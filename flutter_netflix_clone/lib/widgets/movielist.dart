@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_netflix_clone/data.dart';
+import 'package:flutter_netflix_clone/screens/video_detail_screen.dart';
 
 class MovieList extends StatelessWidget {
   const MovieList(
@@ -40,8 +41,18 @@ class MovieList extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 final Content content = contentList[index];
                 return GestureDetector(
-                  onTap: () => print(content.name),
+                  key: Key(content.name),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PlayScreen(
+                                content: content,
+                              )),
+                    );
+                  },
                   child: Container(
+                    key: Key(content.name),
                     margin: const EdgeInsets.symmetric(horizontal: 8.0),
                     height: isOriginals ? 400.0 : 200.0,
                     width: isOriginals ? 300.0 : 100.0,
@@ -133,14 +144,20 @@ class Continue extends StatelessWidget {
                         height: 150.0,
                         width: 100.0,
                         child: IconButton(
-                          icon: const Icon(
-                            Icons.play_circle_fill_outlined,
-                            color: Colors.black,
-                            size: 75.0,
-                          ),
-                          onPressed: () =>
-                              print("${content.name} pressed to play"),
-                        ),
+                            icon: const Icon(
+                              Icons.play_circle_fill_outlined,
+                              color: Colors.black,
+                              size: 75.0,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PlayScreen(
+                                          content: content,
+                                        )),
+                              );
+                            }),
                       )
                     ],
                   );
