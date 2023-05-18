@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_netflix_clone/screens/search_screen.dart';
 
 class CustomAppBar extends StatefulWidget {
   const CustomAppBar({super.key});
@@ -27,7 +28,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     color: Colors.white,
                   ),
                   IconButton(
-                    onPressed: () => print("Search Pressed"),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SearchScreen()),
+                      );
+                    },
                     icon: const Icon(Icons.search),
                     color: Colors.white,
                   ),

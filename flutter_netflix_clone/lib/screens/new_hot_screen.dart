@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_netflix_clone/data.dart';
+import 'package:flutter_netflix_clone/screens/search_screen.dart';
 
 class NewandHotScreen extends StatefulWidget {
   const NewandHotScreen({super.key});
@@ -143,6 +144,7 @@ class _NewandHotScreenState extends State<NewandHotScreen> {
     buttons.add(Padding(
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton.extended(
+        heroTag: "🍿 Coming Soon",
         backgroundColor: Colors.grey.withOpacity(0.5),
         onPressed: () {
           setState(() {
@@ -158,6 +160,7 @@ class _NewandHotScreenState extends State<NewandHotScreen> {
     buttons.add(Padding(
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton.extended(
+        heroTag: "🔥Everyone's Watching",
         backgroundColor: Colors.grey.withOpacity(0.5),
         onPressed: () {
           setState(() {
@@ -173,6 +176,7 @@ class _NewandHotScreenState extends State<NewandHotScreen> {
     buttons.add(Padding(
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton.extended(
+        heroTag: "🔟Top 10 TV Shows",
         backgroundColor: Colors.grey.withOpacity(0.5),
         onPressed: () {
           setState(() {
@@ -188,6 +192,7 @@ class _NewandHotScreenState extends State<NewandHotScreen> {
     buttons.add(Padding(
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton.extended(
+        heroTag: "🔟Top 10 Movies",
         backgroundColor: Colors.grey.withOpacity(0.5),
         onPressed: () {
           setState(() {
@@ -196,21 +201,6 @@ class _NewandHotScreenState extends State<NewandHotScreen> {
         },
         label: const Text(
           "🔟Top 10 Movies",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-    ));
-    buttons.add(Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: FloatingActionButton.extended(
-        backgroundColor: Colors.grey.withOpacity(0.5),
-        onPressed: () {
-          setState(() {
-            title = "🕹Games";
-          });
-        },
-        label: const Text(
-          "🕹Games",
           style: TextStyle(color: Colors.white),
         ),
       ),
@@ -277,7 +267,12 @@ class NHAppBar extends StatelessWidget {
                 color: Colors.white,
               ),
               IconButton(
-                onPressed: () => print("Search Pressed"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchScreen()),
+                  );
+                },
                 icon: const Icon(Icons.search),
                 color: Colors.white,
               ),
