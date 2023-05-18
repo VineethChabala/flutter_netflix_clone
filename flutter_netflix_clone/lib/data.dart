@@ -18,6 +18,14 @@ class Content {
   });
 }
 
+Content strangerthings = const Content(
+        name: "Strangerthings",
+        description:
+            """ When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces in order to get him back.""",
+        imageUrl: "assets/images/bannerimage.jpg",
+        videoUrl: "assets/images/tvshow.mp4",
+        isTvshow: true);
+
 const List<Content> trending = [
   Content(
     name: 'Lucifer',

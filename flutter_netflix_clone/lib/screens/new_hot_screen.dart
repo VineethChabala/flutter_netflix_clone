@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_netflix_clone/data.dart';
 
 class NewandHotScreen extends StatefulWidget {
   const NewandHotScreen({super.key});
@@ -8,13 +9,146 @@ class NewandHotScreen extends StatefulWidget {
 }
 
 class _NewandHotScreenState extends State<NewandHotScreen> {
+  String title = "🍿Coming Soon";
+
+  Widget getbody(String str) {
+    if (str == "🔥Everyone's Watching") {
+      return Column(
+        children: [
+          comingsoon(
+              image: trending[0].imageUrl,
+              description: trending[0].description,
+              isCominsoon: false),
+          comingsoon(
+              image: trending[1].imageUrl,
+              description: trending[1].description,
+              isCominsoon: false),
+        ],
+      );
+    }
+    if (str == "🔟Top 10 TV Shows") {
+      return Column(
+        children: [
+          comingsoon(
+              image: trending[0].imageUrl,
+              description: trending[0].description,
+              isCominsoon: false),
+          comingsoon(
+              image: trending[7].imageUrl,
+              description: trending[7].description,
+              isCominsoon: false),
+          comingsoon(
+              image: strangerthings.imageUrl,
+              description: strangerthings.description,
+              isCominsoon: false),
+        ],
+      );
+    }
+    if (str == "🔟Top 10 Movies") {
+      return Column(
+        children: [
+          comingsoon(
+              day: "JUN 5",
+              image: trending[2].imageUrl,
+              description: trending[2].description,
+              isCominsoon: true),
+          comingsoon(
+              image: trending[1].imageUrl,
+              description: trending[1].description,
+              isCominsoon: false),
+        ],
+      );
+    }
+    return Column(
+      children: [
+        comingsoon(
+            day: 'JUN 16',
+            image: trending[7].imageUrl,
+            description: trending[7].description,
+            isCominsoon: true),
+        comingsoon(
+            day: "JUL 17",
+            image: strangerthings.imageUrl,
+            description: strangerthings.description,
+            isCominsoon: true),
+        comingsoon(
+            day: "JUN 5",
+            image: trending[2].imageUrl,
+            description: trending[2].description,
+            isCominsoon: true)
+      ],
+    );
+  }
+
+  Column comingsoon(
+      {day, required image, required description, required isCominsoon}) {
+    return Column(
+      children: [
+        SizedBox(
+          child: Row(children: [
+            isCominsoon
+                ? SizedBox(
+                    height: 200.0,
+                    width: 75.0,
+                    child: Text(
+                      day,
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 32.0),
+                    ),
+                  )
+                : const SizedBox(
+                    height: 50,
+                    width: 50,
+                  ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                height: 200.0,
+                width: 250.0,
+                decoration: BoxDecoration(
+                    image: DecorationImage(image: AssetImage(image))),
+              ),
+            )
+          ]),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            child: Text(
+              description,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget gettitle(String str) {
+    return Container(
+      alignment: Alignment.topLeft,
+      color: Colors.transparent,
+      child: Text(
+        title,
+        style: const TextStyle(color: Colors.white, fontSize: 28.0),
+      ),
+    );
+  }
+
   List<Widget> horizontalButtons() {
     List<Widget> buttons = [];
     buttons.add(Padding(
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton.extended(
         backgroundColor: Colors.grey.withOpacity(0.5),
-        onPressed: () => print("Coming Soon"),
+        onPressed: () {
+          setState(() {
+            title = "🍿 Coming Soon";
+          });
+        },
         label: const Text(
           "🍿Coming Soon",
           style: TextStyle(color: Colors.white),
@@ -25,7 +159,11 @@ class _NewandHotScreenState extends State<NewandHotScreen> {
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton.extended(
         backgroundColor: Colors.grey.withOpacity(0.5),
-        onPressed: () => print("Everyone's Watching"),
+        onPressed: () {
+          setState(() {
+            title = "🔥Everyone's Watching";
+          });
+        },
         label: const Text(
           "🔥Everyone's Watching",
           style: TextStyle(color: Colors.white),
@@ -36,18 +174,11 @@ class _NewandHotScreenState extends State<NewandHotScreen> {
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton.extended(
         backgroundColor: Colors.grey.withOpacity(0.5),
-        onPressed: () => print("Games"),
-        label: const Text(
-          "🕹Games",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-    ));
-    buttons.add(Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: FloatingActionButton.extended(
-        backgroundColor: Colors.grey.withOpacity(0.5),
-        onPressed: () => print("Top 10 TV Shows"),
+        onPressed: () {
+          setState(() {
+            title = "🔟Top 10 TV Shows";
+          });
+        },
         label: const Text(
           "🔟Top 10 TV Shows",
           style: TextStyle(color: Colors.white),
@@ -58,9 +189,28 @@ class _NewandHotScreenState extends State<NewandHotScreen> {
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton.extended(
         backgroundColor: Colors.grey.withOpacity(0.5),
-        onPressed: () => print("Top 10 Movies"),
+        onPressed: () {
+          setState(() {
+            title = "🔟Top 10 Movies";
+          });
+        },
         label: const Text(
           "🔟Top 10 Movies",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+    ));
+    buttons.add(Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: FloatingActionButton.extended(
+        backgroundColor: Colors.grey.withOpacity(0.5),
+        onPressed: () {
+          setState(() {
+            title = "🕹Games";
+          });
+        },
+        label: const Text(
+          "🕹Games",
           style: TextStyle(color: Colors.white),
         ),
       ),
@@ -85,14 +235,12 @@ class _NewandHotScreenState extends State<NewandHotScreen> {
               children: horizontalButtons(),
             ),
           ),
-          Container(
-            height: 50.0,
-            color: Colors.green,
-          ),
-          Container(
-            height: 500.0,
-            color: Colors.amber,
-          )
+          gettitle(title),
+          getbody(title),
+          // Container(
+          //   height: 500.0,
+          //   color: Colors.amber,
+          // )
         ],
       )),
     );

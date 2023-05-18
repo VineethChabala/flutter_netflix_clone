@@ -7,13 +7,7 @@ class ContentHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Content content = const Content(
-        name: "Strangerthings",
-        description:
-            """ When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces in order to get him back.""",
-        imageUrl: "assets/images/bannerimage.jpg",
-        videoUrl: "assets/images/tvshow.mp4",
-        isTvshow: true);
+    
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -93,7 +87,7 @@ class ContentHeader extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => PlayScreen(
-                                content: content,
+                                content: strangerthings,
                               )),
                     );
                   },
