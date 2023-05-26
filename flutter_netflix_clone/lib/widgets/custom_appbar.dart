@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_netflix_clone/screens/profile_screen.dart';
 import 'package:flutter_netflix_clone/screens/search_screen.dart';
 
 class CustomAppBar extends StatefulWidget {
@@ -31,14 +32,19 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SearchScreen()),
+                        MaterialPageRoute(builder: (context) => const SearchScreen()),
                       );
                     },
                     icon: const Icon(Icons.search),
                     color: Colors.white,
                   ),
                   IconButton(
-                    onPressed: () => print("Profile pressed"),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ProfileScreen()),
+                      );
+                    },
                     icon: const Icon(Icons.account_box),
                     color: Colors.white,
                   )

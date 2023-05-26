@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_netflix_clone/data.dart';
+import 'package:flutter_netflix_clone/screens/profile_screen.dart';
 import 'package:flutter_netflix_clone/screens/search_screen.dart';
 import 'package:flutter_netflix_clone/widgets/movielist.dart';
 import 'package:video_player/video_player.dart';
@@ -54,13 +55,18 @@ class _PlayScreenState extends State<PlayScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SearchScreen()),
+                    MaterialPageRoute(builder: (context) => const SearchScreen()),
                   );
                 },
                 icon: const Icon(Icons.search)),
             IconButton(
                 color: Colors.white,
-                onPressed: () => print("Profile"),
+                onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ProfileScreen()),
+                      );
+                    },
                 icon: const Icon(Icons.account_box))
           ],
         ),
